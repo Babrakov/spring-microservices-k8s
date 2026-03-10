@@ -1,8 +1,8 @@
 Currency Exchange Service
-- http://localhost:8000/currency-exchange/from/USD/to/INR
+- http://localhost:8000/currency-exchange/from/EUR/to/RSD
 
 Currency Conversion Service
-- http://localhost:8100/currency-conversion-feign/from/USD/to/INR/quantity/10
+- http://localhost:8100/currency-conversion-feign/from/EUR/to/RSD/quantity/10
 
 http://35.223.40.231:8000/actuator/health/
 http://35.223.40.231:8000/actuator/health/liveness
