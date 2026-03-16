@@ -4,14 +4,14 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   labels:
-    app: currency-exchange
-  name: currency-exchange
+    app: currency-conversion
+  name: currency-conversion
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: currency-exchange
+      app: currency-conversion
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,12 +20,12 @@ spec:
   template:
     metadata:
       labels:
-        app: currency-exchange
+        app: currency-conversion
     spec:
       containers:
-      - image: sergeibabrakov/mmv3-currency-exchange-service:0.0.11-SNAPSHOT
+      - image: sergeibabrakov/mmv3-currency-conversion-service:0.0.11-SNAPSHOT
         imagePullPolicy: IfNotPresent
-        name: mmv3-currency-exchange-service
+        name: mmv3-currency-conversion-service
       restartPolicy: Always
 ---
 apiVersion: v1
@@ -34,8 +34,8 @@ metadata:
   annotations:
     cloud.google.com/neg: '{"ingress":true}'
   labels:
-    app: currency-exchange
-  name: currency-exchange
+    app: currency-conversion
+  name: currency-conversion
   namespace: default
 spec:
   allocateLoadBalancerNodePorts: true
@@ -44,10 +44,10 @@ spec:
     - IPv4
   ipFamilyPolicy: SingleStack
   ports:
-    - port: 8000
+    - port: 8100
       protocol: TCP
-      targetPort: 8000
+      targetPort: 8100
   selector:
-    app: currency-exchange
+    app: currency-conversion
   sessionAffinity: None
   type: LoadBalancer
