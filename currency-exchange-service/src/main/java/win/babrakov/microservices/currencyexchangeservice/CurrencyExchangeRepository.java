@@ -1,4 +1,4 @@
-package com.in28minutes.microservices.currencyexchangeservice;
+package win.babrakov.microservices.currencyexchangeservice;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
