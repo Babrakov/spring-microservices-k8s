@@ -26,6 +26,14 @@ spec:
       - image: sergeibabrakov/mmv3-currency-exchange-service:0.0.12-SNAPSHOT
         imagePullPolicy: IfNotPresent
         name: mmv3-currency-exchange-service
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8000
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8000
       restartPolicy: Always
 ---
 apiVersion: v1
